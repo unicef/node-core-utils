@@ -4,7 +4,7 @@ const Templates = require("./templates");
 
 class Email {
   constructor(config) {
-    this.config = config;
+    this.config = { ...Email.DEFAULTS, ...config };
     this.logger = new Logger("Email");
     this.logger.info(`Starting...`);
     this.nodemailer = this.init();
@@ -26,14 +26,14 @@ class Email {
       this.logger.error(e);
     }
   }
-  sendInvitation(email, host, verification) {
-    const html = this.templates.InvitationTemplate(host, verification);
-    this.sendEmail({
-      from: this.config.auth.user,
-      to: email,
-      subject: "Juniper Admin Invitation",
-      html,
-    });
+  static get DEFAULTS() {
+    return {
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_ADDRESS,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    };
   }
 }
 
