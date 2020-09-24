@@ -13,6 +13,9 @@ class Email {
   init() {
     this.transport = new Transports(this.config);
   }
+  addTemplate(templateName, template) {
+    this.templates[templateName] = template;
+  }
   async sendEmail({ from, to, subject, html }) {
     this.logger.info(
       `Sending email from: ${from} to: ${to} subject: ${subject}`

@@ -1,5 +1,5 @@
-const InvitationTemplate = require("./invitation");
+const DefaultTemplate = require("./DefaultTemplate");
 
 module.exports = {
-  InvitationTemplate,
+  DefaultTemplate,
 };
