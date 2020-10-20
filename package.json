@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "bunyan": "^1.8.14",
+    "bunyan-format": "^0.2.1",
     "mongoose": "^5.10.6",
     "nodemailer": "^6.4.11"
   }
